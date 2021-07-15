@@ -1,0 +1,148 @@
+.allElements {
+    font-family: Georgia, serif;
+}
+.header {
+    padding: 1px 25px;
+    background: #555;
+    color: #f1f1f1;
+}
+.header a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.content {
+    padding: 14px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+.sticky + .content {
+    padding-top: 102px;
+}
+
+.pageContent {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    margin-bottom: 5px;
+    width: 500px;
+}
+.Area {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    padding: 12px 20px;
+    height: 50px;
+    width: 345px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    margin-bottom: 5px;
+}
+
+.inputArea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    padding: 12px 20px;
+    height: 20px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    margin-bottom: 5px;
+}
+
+.submitButton {
+    background-color: #555;
+    border: 2px solid black;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#inputRegister {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#inputLogIn {
+    float:right;margin:0 79px;
+}
+
+.headerCreation {
+    text-align: center;
+}
+p.registerLink {
+    font-size: 16px;
+    margin-left: 79px;
+}
+
+#linkToMain {
+    text-align: right;
+    margin-right: auto;
+}
+
+#deleteButton {
+    margin-left: 25%;
+    margin-top: 15px;
+}
+
+#findByID {
+    margin-left: 25%;
+}
+
+.findBy {
+    width: 10%;
+    font-size: 16px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+#myTable {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 50%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    margin-left: 25%;
+}
+
+#myTable th, #myTable td {
+    text-align: left;
+    padding: 12px;
+    overflow:hidden;
+}
+
+#myTable tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header2, #myTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.welcomeHeader {
+    text-align: center;
+    font-size: 18px;
+}
+
+.pageCenter {
+    text-align: center;
+}

@@ -1,10 +1,13 @@
 package com.example.practice.service;
 
+import com.example.practice.entity.Project;
 import com.example.practice.entity.Role;
 import com.example.practice.entity.User;
+import com.example.practice.service.ProjectService;
 import com.example.practice.repository.RoleRepository;
 import com.example.practice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,6 +26,8 @@ public class UserService implements UserDetailsService {
     private EntityManager em;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    ProjectService projectService;
     @Autowired
     RoleRepository roleRepository;
     @Autowired
@@ -63,11 +68,22 @@ public class UserService implements UserDetailsService {
 
     public boolean deleteUser(Long userId) {
         if (userRepository.findById(userId).isPresent()) {
+            deleteAllUsersProjects(userId);
             userRepository.deleteById(userId);
             return true;
         }
         return false;
     }
+    private void deleteAllUsersProjects(Long userId){
+        List <Project> projectList = projectService.getAllUserProjects(userId);
+
+        for (Project project : projectList) {
+            projectService.deleteProject(project.getId());
+        }
+    }
+
+
+
 
     public List<User> usergtList(Long idMin) {
         return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)

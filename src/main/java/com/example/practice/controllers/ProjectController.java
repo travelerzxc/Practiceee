@@ -44,10 +44,7 @@ public class ProjectController {
                               @RequestParam(required = true, defaultValue = "" ) String action,
                               Model model) {
         if (action.equals("delete")){
-            List<Ticket> tickets = ticketService.getAllProjectTickets(projectId);
-
-            for (Ticket ticket : tickets)
-                ticketService.deleteTicket(ticket.getId());
+         
             projectService.deleteProject(projectId);
         }
         return "redirect:/allProjects";

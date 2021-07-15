@@ -1,6 +1,7 @@
 package com.example.practice.service;
 
 import com.example.practice.entity.Project;
+import com.example.practice.entity.Ticket;
 import com.example.practice.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,11 +9,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
 public class ProjectService {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
+    TicketService ticketService;
 
     public void addNewProject(Project project) { projectRepository.save(project);}
 
@@ -33,11 +38,18 @@ public class ProjectService {
         boolean isProjectExist = projectRepository.existsById(projectId);
 
         if (isProjectExist) {
+            deleteAllProjectTickets(projectId);
             projectRepository.deleteById(projectId);
             return true;
         }
-
         return false;
+    }
+    private void deleteAllProjectTickets(Long projectId){
+        List <Ticket> tickets = ticketService.getAllProjectTickets(projectId);
+
+        for (Ticket ticket : tickets) {
+            ticketService.deleteTicket(ticket.getId());
+        }
     }
 }
 

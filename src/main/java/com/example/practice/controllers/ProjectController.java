@@ -138,4 +138,9 @@ public class ProjectController {
         return "redirect:/project/"+id;
     }
 
+    @GetMapping("/project/{id}/editTicketTags")
+    public String editTicketTags(Model model,@PathVariable("id") long id){
+        return "editTicketTags";
+    }
+
 }

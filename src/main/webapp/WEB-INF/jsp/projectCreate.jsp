@@ -7,8 +7,6 @@
   <title>Create Project</title>
   <link rel="stylesheet" href="/resources/css/myStyle.css">
 </head>
-
-
 <body>
 <div class="header" id="myHeader">
   <h2> <a href="/">Issue Tracker</a></h2>
@@ -20,11 +18,11 @@
   <div class="pageContent">
     <form:form method="POST" modelAttribute="projectForm">
       <div>
-        <form:input class="inputArea" id="userNameArea" type="text" path="name" placeholder="Project name"
+        <form:input class="inputArea" type="text" path="name" placeholder="Project name"
                     autofocus="true"/>
       </div>
       <div>
-        <form:input class="inputArea" id="passwordArea" type="text" path="description" placeholder="Description"/>
+        <form:textarea id="descriptionArea" type="textArea" path="description" placeholder="Description"/>
       </div>
       <form:hidden
               path="user"

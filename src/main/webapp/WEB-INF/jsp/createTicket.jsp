@@ -21,8 +21,7 @@
         <div class="pageContent">
             <form:form method="POST" modelAttribute="ticketForm">
                 <div>
-                    <form:input class="inputArea"
-                                id="userNameArea"
+                    <form:textarea class="ticketContentField"
                                 type="text"
                                 path="text"
                                 placeholder="The content of the ticket"

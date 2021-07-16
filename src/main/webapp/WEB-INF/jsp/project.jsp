@@ -76,7 +76,9 @@
                         </td>
                         <td align="right" width="10%">
                             <sec:authorize access="hasRole('ADMIN')">
-                            <button align="left" type="submit">Edit tags</button>
+                                <form action="/project/${project.id}/editTicketTags">
+                                    <button align="left" type="submit">Edit tags</button>
+                                </form>
                             </sec:authorize>
                         </td>
                     </tr>

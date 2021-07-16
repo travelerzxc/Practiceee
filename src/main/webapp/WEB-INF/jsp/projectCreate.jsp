@@ -22,6 +22,8 @@
       <div>
         <form:input class="inputArea" id="userNameArea" type="text" path="name" placeholder="Project name"
                     autofocus="true"/>
+        <form:errors path="name"/>
+          ${projectFormErrors}
       </div>
       <div>
         <form:input class="inputArea" id="passwordArea" type="text" path="description" placeholder="Description"/>

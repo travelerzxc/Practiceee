@@ -36,6 +36,9 @@
         <sec:authorize access="hasRole('ADMIN')">
           <p><a href="/admin">Users list</a></p>
         </sec:authorize>
+        <sec:authorize access="hasRole('ADMIN')">
+          <p><a href="/tagTypes">Tag list</a></p>
+        </sec:authorize>
       </div>
     </div>
   </div>

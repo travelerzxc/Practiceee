@@ -35,6 +35,12 @@ public class AdminController {
         model.addAttribute("allUsers", userService.usergtList(userId));
         return "admin";
     }
+
+    @GetMapping("/tagTypes")
+    public String tagList(Model model) {
+       // model.addAttribute("allUsers", userService.allUsers());
+        return "allTagTypes";
+    }
 }
 
 

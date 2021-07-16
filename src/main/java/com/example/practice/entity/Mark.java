@@ -1,4 +1,5 @@
 package com.example.practice.entity;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,30 +9,40 @@ import javax.persistence.*;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
-@Table(name= "t_mark")
+@Table(name = "t_mark")
 public class Mark {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     @Getter
     private Long id;
 
     @Getter
     @Setter
-    @ManyToOne(optional = false,cascade = CascadeType.DETACH)
-    @JoinColumn(name = "ticket_id")
-    private Ticket ticket;
+    @Transient
+    @ManyToMany(mappedBy = "marks")
+    private Set<Ticket> tickets;
 
 
     @Setter
     @Getter
-    @Size(min=3,message = "Минимум 3 символа")
+    @Size(min = 3, max=256, message = "Минимум 3 символа")
     private String name;
 
-    public Mark(){
+    public Mark() {
 
     }
 
+    public Mark(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Mark(Long id) {
+        this.id = id;
+    }
 }
+

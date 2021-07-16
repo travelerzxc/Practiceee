@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface MarkRepository extends JpaRepository<Mark, Long> {
     Mark findMarkById(Long id);
-    List <Mark> findMarksByTicketId(Long ticketId);
-
 }

@@ -13,10 +13,10 @@
         <h2> <a href="/">Issue Tracker</a></h2>
     </div>
     <div class="addTicketZone">
-   <%-- <form:form method="POST" modelAttribute="tagForm"> --%>
+    <form:form method="POST" modelAttribute="tagForm">
         <input class="Area" id="addTagField" name="name" type="text" path="name" placeholder="New tag name"/>
         <button class="submitButton" id="addTagButton" type="submit">Create tag</button>
-    <%--</form:form> --%>
+    </form:form>
     </div>
         <input type="text" class="findBy" id="findByID" onkeyup="searchBy('findByID',0)" placeholder="Search for IDs..">
         <input type="text" class="findBy" id="findByName" onkeyup="searchBy('findByName',1)" placeholder="Search for names..">
@@ -29,19 +29,19 @@
         </tr>
         </thead>
         <tbody>
-<%--        <c:forEach items="${allTags}" var="tag">--%>
-<%--            <tr>--%>
-<%--                <td>${tag.id}</td>--%>
-<%--                <td>${tag.name}</td>--%>
-<%--                <td>--%>
-<%--                    <form action="/tagTypes" method="post">--%>
-<%--                        <input type="hidden" name="userId" value="${tag.id}"/>--%>
-<%--                        <input type="hidden" name="action" value="delete"/>--%>
-<%--                        <button id="deleteButton" type="submit">Delete</button>--%>
-<%--                    </form>--%>
-<%--                </td>--%>
-<%--            </tr>--%>
-<%--        </c:forEach>--%>
+        <c:forEach items="${existingTags}" var="tag">
+            <tr>
+                <td>${tag.id}</td>
+                <td>${tag.name}</td>
+                <td>
+                    <form action="/tagTypes/${tag.id}" method="post">
+                        <input type="hidden" name="tagId" value="${tag.id}"/>
+                        <input type="hidden" name="action" value="delete"/>
+                        <button id="deleteButton" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

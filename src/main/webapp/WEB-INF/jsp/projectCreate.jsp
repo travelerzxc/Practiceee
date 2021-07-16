@@ -20,6 +20,8 @@
       <div>
         <form:input class="inputArea" type="text" path="name" placeholder="Project name"
                     autofocus="true"/>
+        <form:errors path="name"/>
+          ${projectFormErrors}
       </div>
       <div>
         <form:textarea id="descriptionArea" type="textArea" path="description" placeholder="Description"/>

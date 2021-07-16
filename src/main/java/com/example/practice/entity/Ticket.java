@@ -9,19 +9,20 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name="t_ticket")
 public class Ticket {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     @Setter
     @Getter
     private Long id;
 
     @Setter
     @Getter
-    @Size(min = 3, message = "Минимум 3 символа")
+    @Size(min = 3,max=256, message = "Минимум 3 символа")
     private String text;
 
     @Setter
@@ -35,6 +36,11 @@ public class Ticket {
     @ManyToOne(optional = false, cascade = CascadeType.DETACH)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Getter
+    @Setter
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set <Mark> marks;
 
     @Getter
     @Setter

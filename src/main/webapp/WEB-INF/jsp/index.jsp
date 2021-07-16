@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Главная</title>
+  <title>Main</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <link rel="stylesheet" href="/resources/css/myStyle.css">
 </head>
@@ -26,15 +26,15 @@
     <div class="pageContent">
       <div class="pageCenter">
         <sec:authorize access="!isAuthenticated()">
-          <p><a href="/login">Войти</a></p>
-          <p><a href="/registration">Зарегистрироваться</a></p>
+          <p><a href="/login">Log in</a></p>
+          <p><a href="/registration">Register</a></p>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
-          <p><a href="/logout">Выйти</a></p>
+          <p><a href="/logout">Log out</a></p>
         </sec:authorize>
-        <p><a href="/allProjects">Cписок проектов</a></p>
+        <p><a href="/allProjects">Projects list</a></p>
         <sec:authorize access="hasRole('ADMIN')">
-          <p><a href="/admin">Пользователи и прочее</a></p>
+          <p><a href="/admin">Users list</a></p>
         </sec:authorize>
       </div>
     </div>

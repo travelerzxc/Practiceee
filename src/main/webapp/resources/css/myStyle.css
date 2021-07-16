@@ -74,7 +74,7 @@
     cursor: pointer;
 }
 
-#inputRegister {
+#inputCenter {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -145,4 +145,103 @@ p.registerLink {
 
 .pageCenter {
     text-align: center;
+}
+
+.projectNameHeader {
+    text-align: center;
+    font-size: 32px;
+}
+
+.withoutHeadersContainer {
+    width: 95%;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.descriptionZone {
+    border: 3px solid black;
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 10px 10px;;
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+
+.projectDescriptionHeader {
+    text-align:center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ticketTableZone {
+    border: 3px solid black;
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 10px 10px;
+}
+.ticketHeader {
+    text-align:center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ticketsTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+.ticketsTable th, .ticketsTable td {
+    padding: 12px;
+}
+
+.ticketsTable tr {
+    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+#ticketTableHeader {
+    background-color: #555;
+    text-align: left;
+}
+
+.col_1 {
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    width: 10%;
+}
+
+#dateContainer {
+    font-size: 14px;
+    text-decoration: underline;
+    margin-left: auto;
+}
+
+#idContainer {
+    font-size: 14px;
+}
+
+#contentContainer {
+    vertical-align: top;
+    height: 150px;
+    word-break: break-all;
+}
+
+.tagsLine {
+    display: inline-block;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+#myInput {
+    width: 20%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    margin-left: 25%;
 }

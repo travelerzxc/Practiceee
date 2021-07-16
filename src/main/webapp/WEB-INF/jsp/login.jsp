@@ -26,7 +26,7 @@
                autofocus="true"/>
         <input class="Area" id="passwordArea" name="password" type="password" placeholder="Password"/>
         <button class="submitButton" id="inputLogIn" type="submit">Log In</button>
-        <p class="registerLink"><a  href="/register">Register?</a></p>
+        <p class="registerLink"><a  href="/registration">Register?</a></p>
       </div>
     </div>
   </form>

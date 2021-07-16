@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Create Project</title>
@@ -35,7 +34,7 @@
               path="creatingDate"
               value="${project.creatingDate}"
       />
-      <button class="submitButton" type="submit">Registration</button>
+      <button class="submitButton" id="inputCenter" type="submit">Create project!</button>
     </form:form>
   </div>
 </div>

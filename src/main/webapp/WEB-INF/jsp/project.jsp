@@ -3,144 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <head>
-    <title>Title</title>
+    <title>${project.name}</title>
+    <link rel="stylesheet" href="/resources/css/myStyle.css">
 </head>
-<style>
-
-    .header {
-        padding: 1px 25px;
-        background: #555;
-        color: #f1f1f1;
-        display:block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .header a {
-        color: #f1f1f1;
-        text-decoration: none;
-    }
-
-    .content {
-        padding: 14px;
-    }
-
-    .sticky {
-        position: fixed;
-        top: 0;
-        width: 100%
-    }
-
-    .sticky + .content {
-        padding-top: 102px;
-    }
-
-    .fullBodyContainer {
-        font-family: Georgia, serif;
-    }
-
-    .projectNameHeader {
-        text-align: center;
-        font-size: 32px;
-    }
-
-    .withoutHeadersContainer {
-        width: 95%;
-        display:block;
-        margin-left: auto;
-        margin-right: auto;
-
-    }
-    .descriptionZone {
-        border: 3px solid black;
-        background: #f8f8f8;
-        padding: 10px;
-        border-radius: 10px 10px;;
-        margin-bottom: 10px;
-        word-break: break-all;
-    }
-
-    .projectDescriptionHeader {
-        text-align:center;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    .ticketTableZone {
-        border: 3px solid black;
-        background: #f8f8f8;
-        padding: 10px;
-        border-radius: 10px 10px;
-    }
-    .ticketHeader {
-        text-align:center;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    .ticketsTable {
-        border-collapse: collapse;
-        width: 100%;
-        border: 1px solid #ddd;
-        font-size: 18px;
-    }
-
-    .ticketsTable th, .ticketsTable td {
-        padding: 12px;
-    }
-
-    .ticketsTable tr {
-        border: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-    }
-
-    #ticketTableHeader {
-        background-color: #555;
-        text-align: left;
-    }
-
-    .col_1 {
-        text-align: center;
-        font-weight: bold;
-        border: 1px solid #ddd;
-        width: 10%;
-    }
-
-    #dateContainer {
-        font-size: 14px;
-        text-decoration: underline;
-        margin-left: auto;
-    }
-
-    #idContainer {
-        font-size: 14px;
-    }
-
-    #contentContainer {
-        vertical-align: top;
-        height: 150px;
-        word-break: break-all;
-    }
-
-    .tagsLine {
-        display: inline-block;
-        font-size: 14px;
-        word-break: break-all;
-    }
-
-    #myInput {
-        width: 20%;
-        font-size: 16px;
-        padding: 12px 20px 12px 40px;
-        border: 1px solid #ddd;
-        margin-bottom: 12px;
-        margin-top: 12px;
-        margin-left: 25%;
-    }
-
-</style>
 <body>
-<div class="fullBodyContainer">
+<div class="allElements">
     <div class="header" id="myHeader">
         <h2> <a href="/">Issue tracker</a></h2>
     </div>
@@ -212,25 +79,5 @@
 
 
 </body>
-<script>
-    // When the user scrolls the page, execute myFunction
-    window.onscroll = function() {myFunction2()};
-
-    // Get the header
-    var header = document.getElementById("myHeader");
-
-    // Get the offset position of the navbar
-    var sticky = header.offsetTop;
-
-    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-    function myFunction2() {
-        if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
-        } else {
-            header.classList.remove("sticky");
-        }
-    }
-
-</script>
-</script>
+<script src="/resources/js/myScripts.js"></script>
 </html>

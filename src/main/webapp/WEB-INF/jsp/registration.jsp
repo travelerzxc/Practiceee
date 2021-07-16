@@ -35,7 +35,7 @@
             <form:errors path="password"/>
               ${passwordError}
           </div>
-        <button class="submitButton" id="inputRegister" type="submit">Registration</button>
+        <button class="submitButton" id="inputCenter" type="submit">Registration</button>
       </div>
     </form:form>
   </div>

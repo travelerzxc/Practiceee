@@ -26,6 +26,10 @@ public class MarkService {
 
     public List <Mark> getAllMarks(){return markRepository.findAll();}
 
+    public Mark getMarkById(Long id) {
+        return markRepository.findMarkById(id);
+    }
+
     public boolean deleteMark(Long markId) {
         boolean isMarkExist = markRepository.existsById(markId);
 

@@ -25,6 +25,12 @@ public class TicketService {
         return ticketRepository.findTicketsByProjectId(projectId);
 
    }
+
+   public Ticket getTicketById(Long ticketId) {
+        return  ticketRepository.findTicketById(ticketId);
+   }
+
+
     public boolean deleteTicket(Long ticketId) {
         boolean isTicketExist = ticketRepository.existsById(ticketId);
 

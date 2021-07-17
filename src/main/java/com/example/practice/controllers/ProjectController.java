@@ -1,6 +1,7 @@
 package com.example.practice.controllers;
 
 
+import com.example.practice.entity.Mark;
 import com.example.practice.entity.Project;
 import com.example.practice.entity.Ticket;
 import com.example.practice.entity.User;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ProjectController {
@@ -138,9 +141,75 @@ public class ProjectController {
         return "redirect:/project/"+id;
     }
 
-    @GetMapping("/project/{id}/editTicketTags")
-    public String editTicketTags(Model model,@PathVariable("id") long id){
+    @GetMapping("/project/{id}/editTicketTags/{ticketId}")
+    public String editTicketTags(Model model,@PathVariable("id") long id,
+                                 @PathVariable("ticketId") long ticketId){
+        Project project = projectService.getProjectById(id);
+        Ticket ticket = ticketService.getTicketById(ticketId);
+        model.addAttribute("project", project);
+        model.addAttribute("ticket", ticket);
+        model.addAttribute("existingTags", markService.getAllMarks());
         return "editTicketTags";
     }
+
+//    @PostMapping("/project/{id}/editTicketTags/{ticketId}")
+//    public String addTagToTicket(@ModelAttribute("ticket") @Valid Ticket ticket,
+//                               @PathVariable("id") long id,
+//                                 @PathVariable("ticketId") long ticketId,
+//                               BindingResult bindingResult,
+//                               Model model) throws Exception {
+//        Project project = projectService.getProjectById(id);
+//        if (bindingResult.hasErrors()) {
+//            return "redirect:/project/"+id+"/editTicketTags/"+ticketId;
+//        }
+//
+//        if (bindingResult.hasErrors()) {
+//            throw new Exception("Не удалось создать тикет, обратитесь к администратору. " + bindingResult.toString());
+//        }
+//
+//
+//        return "redirect:/project/"+id+"/editTicketTags/"+ticketId;
+//    }
+
+    @PostMapping("/project/{id}/editTicketTags/{ticketId}")
+    public String  addTagToTicket(@RequestParam(required = true, defaultValue = "" ) Long ticketId,
+                                  @RequestParam(required = true, defaultValue = "" ) Long tagId,
+                                @RequestParam(required = true, defaultValue = "" ) String action,
+                                @PathVariable("id") long id,
+                                Model model) {
+        if (action.equals("addTagToTicket")){
+            System.out.println(tagId);
+            Ticket ticket = ticketService.getTicketById(ticketId);
+            Mark mark = markService.getMarkById(tagId);
+            Set <Mark> ticketMarks = ticket.getMarks();
+
+            for (Mark mark1 : ticket.getMarks())
+                System.out.println(mark1.getId());
+            System.out.println("______________________");
+
+            ticketMarks.add(mark);
+
+
+
+            for (Mark marky : ticketMarks)
+                System.out.println(marky.getId());
+            System.out.println("______________________");
+            ticket.setMarks(ticketMarks);
+
+            for (Mark mark1 : ticket.getMarks())
+                System.out.println(mark1.getId());
+
+//            Set <Ticket> markTickets = mark.getTickets();
+//            markTickets.add(ticket);
+//            mark.setTickets(markTickets);
+
+        }
+        if (action.equals("delete")){
+            ticketService.deleteTicket(ticketId);
+        }
+       return "redirect:/project/"+id+"/editTicketTags/"+ticketId;
+    }
+
+
 
 }

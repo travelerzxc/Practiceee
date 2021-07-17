@@ -115,12 +115,12 @@ public class ProjectController {
 
     @PostMapping("/project/{id}/createTicket")
     public String createTicket(@ModelAttribute("ticketForm") @Valid Ticket ticket,
-                               @PathVariable("id") long id,
                                 BindingResult bindingResult,
+                               @PathVariable("id") long id,
                                 Model model) throws Exception {
         Project project = projectService.getProjectById(id);
         if (bindingResult.hasErrors()) {
-            return "/project/"+id+"/createTicket";
+            return "createTicket";
         }
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

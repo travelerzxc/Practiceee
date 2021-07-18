@@ -2,6 +2,7 @@ package com.example.practice.service;
 
 
 import com.example.practice.entity.Mark;
+import com.example.practice.entity.Project;
 import com.example.practice.entity.Ticket;
 import com.example.practice.repository.MarkRepository;
 import com.example.practice.repository.TicketRepository;
@@ -19,14 +20,16 @@ public class MarkService {
     @Autowired
     TicketRepository ticketRepository;
 
-    private void addNewMark(Mark mark) {
+    public void addNewMark(Mark mark) {
         markRepository.save(mark);
     }
 
-    private List<Mark> getAllTicketMarks(Long ticketId){
-        return markRepository.findMarksByTicketId(ticketId);
+    public List <Mark> getAllMarks(){return markRepository.findAll();}
 
+    public Mark getMarkById(Long id) {
+        return markRepository.findMarkById(id);
     }
+
     public boolean deleteMark(Long markId) {
         boolean isMarkExist = markRepository.existsById(markId);
 

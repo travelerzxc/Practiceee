@@ -245,3 +245,52 @@ p.registerLink {
     margin-top: 12px;
     margin-left: 25%;
 }
+
+.ticketContentField {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    padding: 12px 20px;
+    height: 200px;
+    width: 350px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    resize: none;
+}
+
+#descriptionArea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    width: 300px;
+    padding: 12px 20px;
+    height: 150px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    margin-bottom: 5px;
+}
+
+.addTicketZone {
+    display: block;
+    padding: 12px 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    margin: 15px auto 5px;
+    width: 48%;
+}
+
+.selectCenter {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#addTagField {
+    margin-left: 25%;
+    margin-top: 10px;
+    display: inline;
+}

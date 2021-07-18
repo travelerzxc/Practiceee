@@ -1,6 +1,7 @@
 package com.example.practice.controllers;
 
 
+import com.example.practice.entity.Mark;
 import com.example.practice.entity.Project;
 import com.example.practice.entity.Ticket;
 import com.example.practice.entity.User;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ProjectController {
@@ -137,5 +140,51 @@ public class ProjectController {
 
         return "redirect:/project/"+id;
     }
+
+    @GetMapping("/project/{id}/editTicketTags/{ticketId}")
+    public String editTicketTags(Model model,@PathVariable("id") long id,
+                                 @PathVariable("ticketId") long ticketId){
+        Project project = projectService.getProjectById(id);
+        Ticket ticket = ticketService.getTicketById(ticketId);
+        model.addAttribute("project", project);
+        model.addAttribute("ticket", ticket);
+        model.addAttribute("existingTags", markService.getAllMarks());
+        return "editTicketTags";
+    }
+
+    @PostMapping("/project/{id}/editTicketTags/{ticketId}")
+    public String  addTagToTicket( Model model,
+                                   @RequestParam(required = true, defaultValue = "" ) Long ticketId,
+                                  @RequestParam(required = true, defaultValue = "" ) Long tagId,
+                                @RequestParam(required = true, defaultValue = "" ) String action,
+                                @PathVariable("id") long id
+                                ) {
+        if (action.equals("addTagToTicket")){
+
+            Project project = projectService.getProjectById(id);
+            Ticket ticket = ticketService.getTicketById(ticketId);
+            Set <Mark> marks  = ticket.getMarks();
+           Mark single_mark = markService.getMarkById(tagId);
+           single_mark.getName();
+           marks.add(single_mark);
+            marks.add(new Mark(1L, "ddd"));
+            marks.add(new Mark(2L, "dddddd"));
+            ticket.setMarks(marks);
+            ticketService.addNewTicket(ticket);
+
+        }
+
+        if (action.equals("deleteTicketTag")){
+            Ticket ticket = ticketService.getTicketById(ticketId);
+             Mark mark = markService.getMarkById(tagId);
+            Set <Mark> ticketMarks = ticket.getMarks();
+            ticketMarks.remove((Object)mark);
+            ticket.setMarks(ticketMarks);
+            ticketService.addNewTicket(ticket);
+        }
+       return "redirect:/project/"+id+"/editTicketTags/"+ticketId;
+    }
+
+
 
 }

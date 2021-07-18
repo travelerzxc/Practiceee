@@ -19,7 +19,7 @@
             <h2>Creation of the ticket</h2>
         </div>
         <div class="pageContent">
-            <form:form method="POST" modelAttribute="ticketForm">
+            <form:form method="POST" modelAttribute="ticketForm" class="needs-validation">
                 <div>
                     <form:input class="inputArea"
                                 id="userNameArea"
@@ -27,6 +27,7 @@
                                 path="text"
                                 placeholder="The content of the ticket"
                                 autofocus="true"/>
+                    <form:errors path="text"/>${ticketFormErrors}
                 </div>
                 <form:hidden
                         path="project"

@@ -144,9 +144,7 @@ public class ProjectController {
     @GetMapping("/project/{id}/editTicketTags/{ticketId}")
     public String editTicketTags(Model model,@PathVariable("id") long id,
                                  @PathVariable("ticketId") long ticketId){
-        Project project = projectService.getProjectById(id);
         Ticket ticket = ticketService.getTicketById(ticketId);
-        model.addAttribute("project", project);
         model.addAttribute("ticket", ticket);
         model.addAttribute("existingTags", markService.getAllMarks());
         return "editTicketTags";

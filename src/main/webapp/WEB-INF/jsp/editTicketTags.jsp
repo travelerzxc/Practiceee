@@ -1,6 +1,7 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <head>
     <meta charset="UTF-8">
@@ -8,27 +9,30 @@
     <link rel="stylesheet" href="/resources/css/myStyle.css">
 </head>
 <style>
-    #tagSelection {
-        border-color: black;
-        border-width: 3px;
-        width: 300px;
-        height: 50px;
-        background-color: #dddddd;
-        font-size: 18px;
-        padding: 2px;
-        margin-top: 15px;
+    .loginButton {
+        margin-left: 75%;
     }
 
-    .addTicketZoneHeader {
-        text-align:center;
-        font-size: 18px;
-        font-weight: bold;
+    .putTextInLine {
+        display: inline;
     }
+
 </style>
 <body>
 <div class="allElements">
     <div class="header" id="myHeader">
+        <div class="putTextInLine">
         <h2> <a href="/">Issue Tracker</a></h2>
+        </div>
+        <div class="putTextInLine">
+        <sec:authorize access="!isAuthenticated()">
+        <h2 class="loginButton"> <a href="/login">Log In</a></h2>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <h2 class="loginButton"> <a href="/logout">Log Out</a></h2>
+        </sec:authorize>
+        </div>
+
     </div>
     <div class="addTicketZone">
         <div class="addTicketZoneHeader">
@@ -50,8 +54,15 @@
         </div>
      </form>
     </div>
-    <input type="text" class="findBy" id="findByID" onkeyup="searchBy('findByID',0)" placeholder="Search for IDs..">
-    <input type="text" class="findBy" id="findByName" onkeyup="searchBy('findByName',1)" placeholder="Search for names..">
+    <div>
+        <form action="/project/${ticket.project.id}">
+            <div class="buttonCenter">
+                <button class="submitButton" id="toPrevPageButton" type="submit">Back to project page</button>
+            </div>
+        </form>
+        <input type="text" class="findBy" id="findByID" onkeyup="searchBy('findByID',0)" placeholder="Search for IDs..">
+        <input type="text" class="findBy" id="findByName" onkeyup="searchBy('findByName',1)" placeholder="Search for names..">
+    </div>
     <table id="myTable">
         <thead>
         <tr class="header2">

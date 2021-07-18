@@ -1,3 +1,4 @@
+//to find some values through the table with possibility to choose type of value
 function searchBy(elementID,col) {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById(elementID);
@@ -18,6 +19,7 @@ function searchBy(elementID,col) {
 }
 
 
+//to move header while scrolling
 window.onscroll = function() {myFunction2()};
 var header = document.getElementById("myHeader");
 var sticky = header.offsetTop;
@@ -30,8 +32,11 @@ function myFunction2() {
     }
 }
 
+// to get value of selected item in editTicketTags page
 function getSelectValue()
 {
     var selectedValue = document.getElementById("tagSelection").value;
     document.getElementById("inputTagId").value = selectedValue;
 }
+
+

@@ -68,6 +68,7 @@
                     </tr>
                     <tr id="row_3">
                         <td colspan="2" align="left">
+                            <p id="tagSign">Tags:</p>
                             <c:forEach items="${ticket.marks}" var="tag">
                                 <div class="tagsLine">
                                     <p>${tag.name}</p>
@@ -88,19 +89,6 @@
         </div>
     </div>
 </div>
-
-
 </body>
 <script src="/resources/js/myScripts.js"></script>
-<script>
-    var $rows = $('#table tr');
-    $('#search').keyup(function() {
-        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-        $rows.show().filter(function() {
-            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-            return !~text.indexOf(val);
-        }).hide();
-    });
-</script>
 </html>

@@ -21,10 +21,10 @@
                 </c:forEach>
             </select>
         </div>
-        <input type="hidden" name="tagId" value=5 />
+        <input type="hidden"  id="inputTagId" name="tagId"  />
         <input type="hidden" name="ticketId" value="${ticket.id}"/>
         <input type="hidden" name="action" value="addTagToTicket"/>
-        <button class="submitButton" id="addTagButton" type="submit">Add tag</button>
+        <button class="submitButton" id="addTagButton" type="submit" onclick=getSelectValue()>Add tag</button>
      </form>
     </div>
     <input type="text" class="findBy" id="findByID" onkeyup="searchBy('findByID',0)" placeholder="Search for IDs..">
@@ -57,11 +57,5 @@
 </div>
 </body>
 <script src="/resources/js/myScripts.js">
-    function getSelectValue()
-    {
-        var selectedValue = document.getElementById("tagSelection").value;
-        alert(selectedValue);
-    }
-    getSelectValue();
 </script>
 </html>

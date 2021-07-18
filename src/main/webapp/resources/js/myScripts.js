@@ -29,3 +29,9 @@ function myFunction2() {
         header.classList.remove("sticky");
     }
 }
+
+function getSelectValue()
+{
+    var selectedValue = document.getElementById("tagSelection").value;
+    document.getElementById("inputTagId").value = selectedValue;
+}

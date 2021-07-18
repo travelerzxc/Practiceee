@@ -167,8 +167,6 @@ public class ProjectController {
            Mark single_mark = markService.getMarkById(tagId);
            single_mark.getName();
            marks.add(single_mark);
-            marks.add(new Mark(1L, "ddd"));
-            marks.add(new Mark(2L, "dddddd"));
             ticket.setMarks(marks);
             ticketService.addNewTicket(ticket);
 

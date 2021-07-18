@@ -152,25 +152,6 @@ public class ProjectController {
         return "editTicketTags";
     }
 
-//    @PostMapping("/project/{id}/editTicketTags/{ticketId}")
-//    public String addTagToTicket(@ModelAttribute("ticket") @Valid Ticket ticket,
-//                               @PathVariable("id") long id,
-//                                 @PathVariable("ticketId") long ticketId,
-//                               BindingResult bindingResult,
-//                               Model model) throws Exception {
-//        Project project = projectService.getProjectById(id);
-//        if (bindingResult.hasErrors()) {
-//            return "redirect:/project/"+id+"/editTicketTags/"+ticketId;
-//        }
-//
-//        if (bindingResult.hasErrors()) {
-//            throw new Exception("Не удалось создать тикет, обратитесь к администратору. " + bindingResult.toString());
-//        }
-//
-//
-//        return "redirect:/project/"+id+"/editTicketTags/"+ticketId;
-//    }
-
     @PostMapping("/project/{id}/editTicketTags/{ticketId}")
     public String  addTagToTicket(@RequestParam(required = true, defaultValue = "" ) Long ticketId,
                                   @RequestParam(required = true, defaultValue = "" ) Long tagId,
@@ -178,34 +159,20 @@ public class ProjectController {
                                 @PathVariable("id") long id,
                                 Model model) {
         if (action.equals("addTagToTicket")){
-            System.out.println(tagId);
+
+            Ticket ticket = ticketService.getTicketById(ticketId);
+            Set <Mark> marks  = ticket.getMarks();
+            Mark single_mark = markService.getMarkById(tagId);
+            marks.add(single_mark);
+            ticket.setMarks(marks);
+        }
+
+        if (action.equals("deleteTicketTag")){
             Ticket ticket = ticketService.getTicketById(ticketId);
             Mark mark = markService.getMarkById(tagId);
             Set <Mark> ticketMarks = ticket.getMarks();
-
-            for (Mark mark1 : ticket.getMarks())
-                System.out.println(mark1.getId());
-            System.out.println("______________________");
-
-            ticketMarks.add(mark);
-
-
-
-            for (Mark marky : ticketMarks)
-                System.out.println(marky.getId());
-            System.out.println("______________________");
+            ticketMarks.remove((Object)mark);
             ticket.setMarks(ticketMarks);
-
-            for (Mark mark1 : ticket.getMarks())
-                System.out.println(mark1.getId());
-
-//            Set <Ticket> markTickets = mark.getTickets();
-//            markTickets.add(ticket);
-//            mark.setTickets(markTickets);
-
-        }
-        if (action.equals("delete")){
-            ticketService.deleteTicket(ticketId);
         }
        return "redirect:/project/"+id+"/editTicketTags/"+ticketId;
     }

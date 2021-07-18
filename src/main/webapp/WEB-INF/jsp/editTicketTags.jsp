@@ -43,11 +43,12 @@
                         <td>${tag.id}</td>
                         <td>${tag.name}</td>
                         <td>
-<%--                            <form action="/tagTypes" method="post">--%>
-<%--                                <input type="hidden" name="userId" value="${tag.id}"/>--%>
-<%--                                <input type="hidden" name="action" value="delete"/>--%>
+                           <form action="/project/${id}/editTicketTags/${ticketId}" method="post">
+                               <input type="hidden" name="ticketId" value="${ticket.id}"/>
+                               <input type="hidden" name="tagId" value="${tag.id}"/>
+                               <input type="hidden" name="action" value="deleteTicketTag"/>
                                 <button id="deleteButton" type="submit">Delete</button>
-<%--                            </form>--%>
+                           </form>
                         </td>
                     </tr>
                 </c:forEach>

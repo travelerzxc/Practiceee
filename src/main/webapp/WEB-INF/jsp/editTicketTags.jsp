@@ -4,27 +4,50 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin page</title>
+    <title>Ticket Tags</title>
     <link rel="stylesheet" href="/resources/css/myStyle.css">
 </head>
+<style>
+    #tagSelection {
+        border-color: black;
+        border-width: 3px;
+        width: 300px;
+        height: 50px;
+        background-color: #dddddd;
+        font-size: 18px;
+        padding: 2px;
+        margin-top: 15px;
+    }
+
+    .addTicketZoneHeader {
+        text-align:center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
 <body>
 <div class="allElements">
     <div class="header" id="myHeader">
         <h2> <a href="/">Issue Tracker</a></h2>
     </div>
     <div class="addTicketZone">
+        <div class="addTicketZoneHeader">
+            <h2>Attach new tag for your ticket!</h2>
+        </div>
     <form action="/project/${id}/editTicketTags/${ticketId}" method="post">
         <div class="selectCenter">
             <select id="tagSelection">
                 <c:forEach items="${existingTags}" var="tag">
-                    <option value="${tag.id}">${tag.name}</option>
+                    <option class="lt" value="${tag.id}">${tag.name}</option>
                 </c:forEach>
             </select>
         </div>
         <input type="hidden"  id="inputTagId" name="tagId"  />
         <input type="hidden" name="ticketId" value="${ticket.id}"/>
         <input type="hidden" name="action" value="addTagToTicket"/>
-        <button class="submitButton" id="addTagButton" type="submit" onclick=getSelectValue()>Add tag</button>
+        <div class="buttonCenter">
+            <button class="submitButton" id="addTagButton" type="submit" onclick=getSelectValue()>Add tag</button>
+        </div>
      </form>
     </div>
     <input type="text" class="findBy" id="findByID" onkeyup="searchBy('findByID',0)" placeholder="Search for IDs..">

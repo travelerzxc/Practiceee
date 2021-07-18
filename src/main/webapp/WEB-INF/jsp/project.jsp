@@ -68,11 +68,11 @@
                     </tr>
                     <tr id="row_3">
                         <td colspan="2" align="left">
-<%--                            <th:block th:each="tag : ${ticket.tags}">--%>
-<%--                                <div class="tagsLine">--%>
-<%--                                    <p th:text="${tag.name}"></p>--%>
-<%--                                </div>--%>
-<%--                            </th:block>--%>
+                            <c:forEach items="${ticket.marks}" var="tag">
+                                <div class="tagsLine">
+                                    <p>${tag.name}</p>
+                                </div>
+                            </c:forEach>
                         </td>
                         <td align="right" width="10%">
                             <sec:authorize access="hasRole('ADMIN')">
@@ -92,4 +92,15 @@
 
 </body>
 <script src="/resources/js/myScripts.js"></script>
+<script>
+    var $rows = $('#table tr');
+    $('#search').keyup(function() {
+        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $rows.show().filter(function() {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
+    });
+</script>
 </html>

@@ -153,26 +153,34 @@ public class ProjectController {
     }
 
     @PostMapping("/project/{id}/editTicketTags/{ticketId}")
-    public String  addTagToTicket(@RequestParam(required = true, defaultValue = "" ) Long ticketId,
+    public String  addTagToTicket( Model model,
+                                   @RequestParam(required = true, defaultValue = "" ) Long ticketId,
                                   @RequestParam(required = true, defaultValue = "" ) Long tagId,
                                 @RequestParam(required = true, defaultValue = "" ) String action,
-                                @PathVariable("id") long id,
-                                Model model) {
+                                @PathVariable("id") long id
+                                ) {
         if (action.equals("addTagToTicket")){
 
+            Project project = projectService.getProjectById(id);
             Ticket ticket = ticketService.getTicketById(ticketId);
             Set <Mark> marks  = ticket.getMarks();
-            Mark single_mark = markService.getMarkById(tagId);
-            marks.add(single_mark);
+           Mark single_mark = markService.getMarkById(tagId);
+           single_mark.getName();
+           marks.add(single_mark);
+            marks.add(new Mark(1L, "ddd"));
+            marks.add(new Mark(2L, "dddddd"));
             ticket.setMarks(marks);
+            ticketService.addNewTicket(ticket);
+
         }
 
         if (action.equals("deleteTicketTag")){
             Ticket ticket = ticketService.getTicketById(ticketId);
-            Mark mark = markService.getMarkById(tagId);
+             Mark mark = markService.getMarkById(tagId);
             Set <Mark> ticketMarks = ticket.getMarks();
             ticketMarks.remove((Object)mark);
             ticket.setMarks(ticketMarks);
+            ticketService.addNewTicket(ticket);
         }
        return "redirect:/project/"+id+"/editTicketTags/"+ticketId;
     }

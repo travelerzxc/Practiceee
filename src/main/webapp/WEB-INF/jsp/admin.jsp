@@ -36,7 +36,7 @@
           <c:forEach items="${user.roles}" var="role">${role.name} ; </c:forEach>
         </td>
         <td>
-          <form action="${pageContext.request.contextPath}/admin" method="post">
+          <form action="/admin" method="post">
             <input type="hidden" name="userId" value="${user.id}"/>
             <input type="hidden" name="action" value="delete"/>
             <button id="deleteButton" type="submit">Delete</button>

@@ -2,6 +2,7 @@ package com.example.practice.service;
 
 import com.example.practice.entity.Project;
 import com.example.practice.entity.Role;
+import com.example.practice.entity.Ticket;
 import com.example.practice.entity.User;
 import com.example.practice.service.ProjectService;
 import com.example.practice.repository.RoleRepository;
@@ -30,6 +31,8 @@ public class UserService implements UserDetailsService {
     ProjectService projectService;
     @Autowired
     RoleRepository roleRepository;
+    @Autowired
+    TicketService ticketService;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -69,6 +72,7 @@ public class UserService implements UserDetailsService {
     public boolean deleteUser(Long userId) {
         if (userRepository.findById(userId).isPresent()) {
             deleteAllUsersProjects(userId);
+            deleteAllUsersTickets(userId);
             userRepository.deleteById(userId);
             return true;
         }
@@ -79,6 +83,14 @@ public class UserService implements UserDetailsService {
 
         for (Project project : projectList) {
             projectService.deleteProject(project.getId());
+        }
+    }
+
+    private void deleteAllUsersTickets(Long userId) {
+        List <Ticket> ticketList = ticketService.getAllUserTickets(userId);
+
+        for (Ticket ticket : ticketList) {
+            ticketService.deleteTicket(ticket.getId());
         }
     }
 

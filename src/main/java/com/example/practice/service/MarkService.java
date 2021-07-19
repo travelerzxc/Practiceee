@@ -20,6 +20,9 @@ public class MarkService {
     @Autowired
     TicketRepository ticketRepository;
 
+    @Autowired
+    TicketService ticketService;
+
     public void addNewMark(Mark mark) {
         markRepository.save(mark);
     }
@@ -34,6 +37,7 @@ public class MarkService {
         boolean isMarkExist = markRepository.existsById(markId);
 
         if (isMarkExist) {
+            ticketService.deleteMarkInTicket(markId);
             markRepository.deleteById(markId);
             return true;
         }

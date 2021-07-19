@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <!DOCTYPE html>
@@ -10,6 +11,9 @@
     <link rel="stylesheet" href="/resources/css/myStyle.css">
 </head>
 <body>
+<sec:authorize access="!isAuthenticated()">
+    <% response.sendRedirect("/"); %>
+</sec:authorize>
 <div class="allElements">
     <div class="header" id="myHeader">
         <h2><a href="/">Issue Tracker</a></h2>

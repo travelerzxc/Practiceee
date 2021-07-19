@@ -8,31 +8,13 @@
     <title>Ticket Tags</title>
     <link rel="stylesheet" href="/resources/css/myStyle.css">
 </head>
-<style>
-    .loginButton {
-        margin-left: 75%;
-    }
-
-    .putTextInLine {
-        display: inline;
-    }
-
-</style>
 <body>
+<sec:authorize access="!hasRole('ADMIN')">
+    <% response.sendRedirect("/"); %>
+</sec:authorize>
 <div class="allElements">
     <div class="header" id="myHeader">
-        <div class="putTextInLine">
         <h2> <a href="/">Issue Tracker</a></h2>
-        </div>
-        <div class="putTextInLine">
-        <sec:authorize access="!isAuthenticated()">
-        <h2 class="loginButton"> <a href="/login">Log In</a></h2>
-        </sec:authorize>
-        <sec:authorize access="isAuthenticated()">
-            <h2 class="loginButton"> <a href="/logout">Log Out</a></h2>
-        </sec:authorize>
-        </div>
-
     </div>
     <div class="addTicketZone">
         <div class="addTicketZoneHeader">

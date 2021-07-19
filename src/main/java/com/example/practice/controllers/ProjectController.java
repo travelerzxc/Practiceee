@@ -54,11 +54,15 @@ public class ProjectController {
     }
 
     @GetMapping("/project/{id}")
-    public String showProject(Model model, @PathVariable("id") long id) {
+    public String showProject(Model model, @PathVariable("id") long id,
+                              @RequestParam(required = false, defaultValue = "-1") Long MarkId) {
         Project project = projectService.getProjectById(id);
         List <Ticket> tickets = ticketService.getAllProjectTickets(id);
+        List <Mark> marks = markService.getAllMarks();
         model.addAttribute("project", project);
         model.addAttribute("tickets", tickets);
+        model.addAttribute("tags", marks);
+        model.addAttribute("filterMarkId", MarkId);
         return "project";
     }
 

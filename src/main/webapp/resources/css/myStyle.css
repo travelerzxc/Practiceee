@@ -2,7 +2,7 @@
     font-family: Georgia, serif;
 }
 .header {
-    padding: 1px 25px;
+    padding: 1px 15px;
     background: #555;
     color: #f1f1f1;
 }
@@ -327,3 +327,13 @@ p.registerLink {
     margin-top: 15px;
 }
 
+.buttonCenterFilter {
+
+    margin-bottom: 25px;
+}
+
+.selectCenter2 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+}

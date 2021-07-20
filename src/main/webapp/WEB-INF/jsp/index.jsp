@@ -10,10 +10,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <link rel="stylesheet" href="/resources/css/myStyle.css">
 </head>
-<style>
-
-
-</style>
 <body>
 <div class="allElements">
   <div class="header" id="myHeader">

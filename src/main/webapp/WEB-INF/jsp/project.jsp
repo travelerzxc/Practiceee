@@ -10,7 +10,14 @@
 <body>
 <div class="allElements">
     <div class="header" id="myHeader">
-        <h2> <a href="/">Issue Tracker</a></h2>
+        <h2 class="inlineHeader" id="mainSign"> <a href="/">Issue Tracker</a></h2>
+        <p class="inlineHeader" id="projectLink"><a href="/allProjects">Projects</a></p>
+        <sec:authorize access="!isAuthenticated()">
+            <p class="inlineHeader" id="loginLink"><a href="/login">Log In</a></p>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <p class="inlineHeader" id="loginLink"><a href="/logout">Log Out</a></p>
+        </sec:authorize>
     </div>
     <div class="projectNameHeader">
         <h3>${project.name}</h3>
@@ -43,6 +50,12 @@
                         <div class="buttonCenterFilter">
                          <button class="submitButton" id="addTagButton" type="submit" onclick="getSelectValue()">Filter</button>
                         </div>
+                    </form>
+                </div>
+                <div>
+                    <form action="/allProjects">
+                            <button class="submitButton" id="toPrevPageButtonProjectPage"
+                                    type="submit">Back to all projects page</button>
                     </form>
                 </div>
             </div>

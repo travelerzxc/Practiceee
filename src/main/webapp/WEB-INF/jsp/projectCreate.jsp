@@ -13,7 +13,14 @@
   <% response.sendRedirect("/"); %>
 </sec:authorize>
 <div class="header" id="myHeader">
-  <h2> <a href="/">Issue Tracker</a></h2>
+  <h2 class="inlineHeader" id="mainSign"> <a href="/">Issue Tracker</a></h2>
+  <p class="inlineHeader" id="projectLink"><a href="/allProjects">Projects</a></p>
+  <sec:authorize access="!isAuthenticated()">
+    <p class="inlineHeader" id="loginLink"><a href="/login">Log In</a></p>
+  </sec:authorize>
+  <sec:authorize access="isAuthenticated()">
+    <p class="inlineHeader" id="loginLink"><a href="/logout">Log Out</a></p>
+  </sec:authorize>
 </div>
 <div class="forms">
   <div class="headerCreation">
@@ -40,7 +47,16 @@
       />
       <button class="submitButton" id="inputCenter" type="submit">Create project!</button>
     </form:form>
+    <div>
+      <form action="/allProjects">
+      <div class="buttonCenter">
+        <button class="submitButton" id="toPrevPageButtonCreateTicket"
+                type="submit">Back to all projects page</button>
+      </div>
+      </form>
+    </div>
   </div>
+
 </div>
 
 </body>

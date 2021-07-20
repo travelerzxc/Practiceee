@@ -16,13 +16,21 @@
 </sec:authorize>
 <div class="allElements">
     <div class="header" id="myHeader">
-        <h2><a href="/">Issue Tracker</a></h2>
+        <h2 class="inlineHeader" id="mainSign"> <a href="/">Issue Tracker</a></h2>
+        <p class="inlineHeader" id="projectLink"><a href="/allProjects">Projects</a></p>
+        <sec:authorize access="!isAuthenticated()">
+            <p class="inlineHeader" id="loginLink"><a href="/login">Log In</a></p>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <p class="inlineHeader" id="loginLink"><a href="/logout">Log Out</a></p>
+        </sec:authorize>
     </div>
     <div class="forms">
         <div class="headerCreation">
             <h2>Creation of the ticket</h2>
         </div>
         <div class="pageContent">
+            <div>
             <form:form method="POST" modelAttribute="ticketForm" class="needs-validation">
                 <div>
                     <form:textarea class="ticketContentField"
@@ -46,6 +54,15 @@
                 />
                 <button class="submitButton" id="inputCenter" type="submit">Create ticket</button>
             </form:form>
+            </div>
+            <div>
+                <form action="/project/${project.id}/">
+                    <div class="buttonCenter">
+                        <button class="submitButton" id="toPrevPageButtonCreateTicket"
+                                type="submit">Cancel and back</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

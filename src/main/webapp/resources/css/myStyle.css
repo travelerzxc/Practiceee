@@ -1,15 +1,41 @@
 .allElements {
     font-family: Georgia, serif;
 }
+
+.inlineHeader {
+    display: inline;
+}
+
+#projectLink {
+    margin-left: 770px;
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+#mainSign {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+#loginLink {
+    font-size: 24px;
+    margin-left: 900px;
+}
+
 .header {
-    padding: 1px 15px;
+
     background: #555;
     color: #f1f1f1;
+    height: 60px;
+    padding-top: 20px;
+    padding-bottom: 0px;
 }
 .header a {
     display: inline;
     color: #f1f1f1;
     text-decoration: none;
+
 }
 
 .content {
@@ -329,7 +355,7 @@ p.registerLink {
 
 .buttonCenterFilter {
 
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .selectCenter2 {
@@ -337,3 +363,18 @@ p.registerLink {
     margin-right: auto;
     margin-bottom: 25px;
 }
+
+#toPrevPageButtonProjectPage {
+    margin-bottom: 10px;
+}
+
+#createTicketButton {
+    display: inline;
+    margin-left: 100px;
+}
+
+#toPrevPageButtonCreateTicket {
+    display: block;
+    margin: 5px auto 10px;
+}
+

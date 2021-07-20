@@ -7,7 +7,7 @@
 }
 
 #projectLink {
-    margin-left: 770px;
+    margin-left: 10%;
     margin-top: 10px;
     font-size: 24px;
 }
@@ -20,7 +20,7 @@
 
 #loginLink {
     font-size: 24px;
-    margin-left: 900px;
+    margin-left: 10%;
 }
 
 .header {
@@ -30,6 +30,9 @@
     height: 60px;
     padding-top: 20px;
     padding-bottom: 0px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .header a {
     display: inline;
@@ -45,7 +48,7 @@
 .sticky {
     position: fixed;
     top: 0;
-    width: 100%
+    width: 100%;
 }
 
 .sticky + .content {
@@ -349,7 +352,7 @@ p.registerLink {
     font-weight: bold;
 }
 #toPrevPageButton {
-    margin-left: 66%;
+    margin-left: 46%;
     margin-top: 15px;
 }
 
